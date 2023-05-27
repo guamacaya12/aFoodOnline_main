@@ -17,6 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+#Importar las funciones del archivo views (main)
+from . import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls)
+
+    #La ruta se deja vacía, para que sea la primera vista en cargar
+  , path('', views.home, name='home')
 ]
