@@ -1,0 +1,186 @@
+
+**----------------------------------------------------    ACTIVAR PYTHON ENV-----------------------
+
+* SI SE EJECUTA DESDE POWERSHELL
+D:/3-Programacion/pyenvs/djangoq/Scripts/Activate.ps1
+
+GITHUB REPOSITORY
+https://github.com/dev-rathankumar/foodOnline
+
+
+DIRECTORIOS
+ cd D:\3-Programacion\Python\DjangoCartaRest\icard>
+
+
+COMMANDOS
+    
+--CREA UN PROYECTO
+    django-admin startproject mysite 
+
+-- CREA APP DENTRO DEL PROYECTO
+    python manage.py startapp mysited    
+
+-- CREAR LAS TABLAS POR DEFECTO EN BASE DE DATOS
+    python manage.py migrate    
+
+-- CREAR UN SUPER USUARIO
+    python manage.py createsuperuser  
+
+-- DAR DE ALTA LA APP EN SETTINGS
+    Se pone el nombre en la sección de apps, se pueden
+    poner tantas cómo sea necesario
+
+-- DAR DE ALTA LA BASE DE DATOS EN SETTINGS
+    Definir que tipo de base de datos se conectará (MySQL, SQL, Etc.)
+
+-- CREAR EL MODELO DENTRO DE LA APP (MODELS)
+    Es necesario dar de alta el modelo de datos (tabla y sus tipos de datos)
+    
+-- MIGRAR BASE DE DATOS (CREA TABLA BASADA EN LOS MODELOS)
+    python manage.py makemigrations "NOMBRE DE LA APP"
+
+-- APLICAR MIGRACIONES
+    python manage.py migrate
+
+-- ECHAR A ANDAR EL SERVIDOR (TAMBIÉN SIRVE PARA VERIFICAR CORRECTO FUNCIONAMIENTO DE LA APP)
+    python manage.py runserver  
+
+
+-- COPIAR LOS ARCHIVOS ESTÁTICOS (ES IMPORTANTE PONER LAS RUTAS EN SETTINGS)
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR/'static'
+STATIC_FILES = [
+    'foodOnline_back/static'
+]
+
+    python manage.py collectstatic
+
+
+
+* Una vez que se realizan las configuraciones iniciales, es importante crear el repositorio de URLS.
+* También es necesario crear la carpeta "Templates" para poner todos los layouts en HTML
+
+
+REACT----------
+
+* Crear la app con yarn
+    npx create-react-app icard
+* instalar yarn
+  cd icard
+  yarn 
+  yarn start
+* la aplicación debe correr
+
+
+
+--------------------USO DE GIT EN LOS PROYECTOS---------------
+https://codemy.com/git
+
+* Se ingresan estos comamdos (Sólo una vez por proyecto)
+    git config --global user.name "guacamaya12"
+    git config --global user.email "tomas.zuppa@anahuac.mx"
+    git config --global push.default matching
+    git config --global alias.co checkout 
+    git init
+
+
+* Para iniciar el branch y cargar todo a la nube (pedirá log in vía web o github desktop)
+git add .
+git commit -am 'Initial Commit'
+
+* Para actualizar en eventos subsecuentes
+git commit-am 
+
+(Es posible que se reciba una alerta de seguridad al subir la secret key directamente al branch master)
+
+  git commit    *SIRVE PARA REALIZAR ACTUALIZACIONES
+
+* En caso de agregar un punto de control sobre nuevos cambios:
+  git add .
+  git commit -am 'nombreDelaVersion'
+  git push
+
+* Se puede revisar el estatus de las cargas con 
+git status
+
+**---------------------INSTALACIÓN DE SQL-------------------------------------------------------------------------    
+SQL --- marzo 2023
+Para instalar SQL, hay que verificar bien el correcto funcionamiento y versión de SQL
+importante revisar que librerías importar, para sql server express 2019, me funcionó 
+instalar  https://pypi.org/project/django-pyodbc-azure-2019/
+
+    -- REALIZAR MIGRACIONES EN EL SERVIDOR
+    python manage.py make migrations (es el primer paso, sirve para dar de alta los modelos, luego se migran a SQL)
+    python manage.py migrate (indicar nombre de la app + número de migración ej. 0001)
+
+
+**----------------------------------------------------    
+MySQL
+root
+Delphi23#
+
+* SIEMPRE QUE SE GUARDEN DATOS EN MYSQL, SE DEBE DE DAR DE ALTA EN __init__.py EL SIGUIENTE COMANDO.
+import pymysql
+pymysql.install_as_MySQLdb()
+
+
+**----------------------------------------------------    ADMIN-----------------------
+---SUPERUSER Django
+tomzg
+tomzg@icloud.com
+Delphi23#
+
+**----------------------------------------------------  PROTECCIÓN DE DATOS CON PYTHON DECOUPLE -----------------------
+    pip install python-decouple 
+
+#Seguir la documentación 
+1. Crear archivo .env (el archivo env no se envía (se encuentra en .gitignore como exclusión en GIT))
+2. Guardar todas las variables en el archivo
+3. Relacionar las variables con los parámetros en "settings"
+
+
+
+
+
+*----------------------------------CONECTAR A BASE DE DATOS POSTGRESQL EN AZURE------------------------------------------
+POSTGRE
+Delphi23#
+
+Ref: https://www.appsloveworld.com/django/100/24/django-unit-tests-unable-to-create-the-django-migrations-table
+
+https://hevodata.com/learn/django-postgresql/
+
+* Instalación de librerías 
+    pip install psycopg2
+
+* Creación de usuario en postgresql
+https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
+
+* Asignación de rol al nuevo usuario
+https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
+
+CREATE DATABASE yourdbname;
+CREATE USER youruser WITH ENCRYPTED PASSWORD 'yourpass';
+GRANT ALL PRIVILEGES ON DATABASE yourdbname TO youruser;
+
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'djangoqa', 
+       'USER': 'manager1',
+       'PASSWORD': '123456',
+       'HOST': 'localhost',
+    #    'PORT': '5432',
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
