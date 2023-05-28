@@ -14,15 +14,29 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# Para conectar con la plataforma de administración
 from django.contrib import admin
-from django.urls import path
+# Librería para habilitar las rutas de los archivos
+from django.urls import path, include
+# Importa las funciones del archivo views
+from . import views 
 
-#Importar las funciones del archivo views (main)
-from . import views
+# Funciones para habilitar las carpetas de MEDIA (dónde se suben las imágenes de los perfiles  de usuario)
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+
+# LISTA DE RUTAS
 
 urlpatterns = [
-    path('admin/', admin.site.urls)
+      path('admin/', admin.site.urls)
+    , path('', views.home , name = 'home')
+    #Incluir las URL de la app bAccounts, y nombrarla accounts
+    # , path('accounts/', include('bAccounts.urls'), name = 'accounts')
 
-    #La ruta se deja vacía, para que sea la primera vista en cargar
-  , path('', views.home, name='home')
-]
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Con esta instrucción (después del signo +) se indica dónde guardar
+# los archivos multimedia de los usuarios y perfiles creados
+# los parámetros  (MEDIA_URL y MEDIA_ROOT) se ponen en "settings"

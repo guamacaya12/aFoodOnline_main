@@ -101,6 +101,7 @@ class User(AbstractBaseUser):
 
     #--------------CLASS USER PROFILE (perfil de usuario)
 class UserProfile(models.Model):
+    # el oneToOneField obliga  aque un usuario solo pueda tener un perfil, el modo CASCADE, hace que se borre el perfil, cuando el usuario es borrado
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     profile_picture = models.ImageField(upload_to='users/profile_pictures', blank=True, null=True)
     cover_photo = models.ImageField(upload_to='users/cover_photos', blank=True, null=True)

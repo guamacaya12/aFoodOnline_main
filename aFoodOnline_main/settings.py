@@ -127,12 +127,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 # Configuración de archivos estáticos (html-css-js)
 STATIC_ROOT = BASE_DIR/'static'
 STATICFILES =[
     'aFoodOnline_main/static'
 ]
+
+# Configuración de archivos multimedia (imágenes que cargan los usuarios para dar de alta un perfil)
+# Para soportar estas rutas, las carpetas se crean de forma automática en la carpeta raíz.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'media'
 
 
 # Default primary key field type
