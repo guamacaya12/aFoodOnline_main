@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bAccounts'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'aFoodOnline_main.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 #Librería para proteger información sensible (.envs + .gitignore)
-from decouple import config
+#from decouple import config
 
 DATABASES = {
     'default': {
@@ -88,6 +89,9 @@ DATABASES = {
         , 'HOST': config('DB_HOST')
     }
 }
+
+# Le decimos a django que utilice nuestro modelo de gestión de usuarios (bAccounts)
+AUTH_USER_MODEL = 'bAccounts.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
