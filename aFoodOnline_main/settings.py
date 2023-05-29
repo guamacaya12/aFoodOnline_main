@@ -14,6 +14,8 @@ from pathlib import Path
 #Librería para proteger información sensible (.envs + .gitignore)
 from decouple import config
 
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static'
             ],
         },
     },
@@ -127,12 +130,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 # Configuración de archivos estáticos (html-css-js)
+
 STATIC_ROOT = BASE_DIR/'static'
-STATICFILES =[
-    'aFoodOnline_main/static'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIR =[
+    'aFoodOnline_main/static/'
 ]
+# STATICFILES_DIR = [
+#    os.path.join(BASE_DIR, 'aFoodOnline_main/static/')
+# ]
+
+
+
+
+
 
 # Configuración de archivos multimedia (imágenes que cargan los usuarios para dar de alta un perfil)
 # Para soportar estas rutas, las carpetas se crean de forma automática en la carpeta raíz.

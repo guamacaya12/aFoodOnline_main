@@ -33,7 +33,7 @@ urlpatterns = [
       path('admin/', admin.site.urls)
     , path('', views.home , name = 'home')
     #Incluir las URL de la app bAccounts, y nombrarla accounts
-    # , path('accounts/', include('bAccounts.urls'), name = 'accounts')
+    , path('accounts/', include('bAccounts.urls'), name = 'accounts')
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
