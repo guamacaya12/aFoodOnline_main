@@ -2,7 +2,28 @@
 # Carga de librerías para llamar templates
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import redirect
 
-#Crea tus vistas aquú
+# importa el UserForm del archivo forms.py
+from .forms import UserForm
+
+# Utiliza los campos del formulario User, para hacer el rgistro de usuario en bAccounts
 def registerUser(request):
-    return render(request, 'bAccounts/registerUser.html')
+
+    #VERIFICAR SI SE GUARDA EL USUARIO, EN CASO DE QUE NO, SE REGRESA AL FORMULARIO
+    if request.method == 'POST':
+        print(request.POST)
+        #Guardar los datos si el formulario es válido (los campos del formulario se pasan en "request.POST")
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # una vez que se guardan los datos, te regresa a la página del registro de usuario
+            return redirect('registerUser')
+    else:
+    # En caso de que no se hayan guardado bien los datos, te regresa al formulario
+        form = UserForm()
+    context = {
+        'form': form, 
+    }
+    #Pasamos el contexto (campos) del usuario al formulario de la ruta registerUser.html
+    return render(request, 'bAccounts/registerUser.html', context)
