@@ -20,11 +20,15 @@
                     <hr>
                     <div id="restaurant-sets-holder">
                             
-                        <form action = "{% url 'registerUser' %} "class="form-fields-set foodbakery-dev-restaurant-form" method="post" action="register-select-package.html">
+                        <form action = "{% url 'registerUser' %} "class="form-fields-set foodbakery-dev-restaurant-form" method="post" >
+                            
                             
                             {% comment %} establecer token de seguridad para formularios {% endcomment %}
                             {% csrf_token %}
-                            
+
+                            <!--Carga mensaje de error-->
+                            {% include 'includes/alerts.html' %}
+
                             <ul class="register-add-restaurant-tab-container restaurant-information-tab-container">
                                 <li>
                                     <div class="row">

@@ -5,7 +5,7 @@
 # Se utilizan para detonar acciones pre o post save de algún registro
 # En este caso, se crea un perfil de usuario (dirección, fotos, etc.) después de guardar datos básicos de usuario
 
-from django.db.models.signals import post_save, pre_save
+from django.db.models.signals  import post_save, pre_save
 from django.dispatch import receiver
 from .models import User, UserProfile
 

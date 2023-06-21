@@ -1,0 +1,18 @@
+
+
+{% comment %} <!-- Aquí se obtienen todos los mensajes de alertas y errores que se utilizan de la librería messages -->
+<!-- Esta página debe invocarse con un include {% include 'includes/alerts.html' %} --> 
+el message.tags, se establece en settings, y se invoca desde aquí, para que el color de las
+alertas, sea dinámico
+{% endcomment %}
+
+{% if messages %}        
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} show-notification" role="alert">
+<strong> {{ message}} </strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+{% endfor%}
+{% endif %}
