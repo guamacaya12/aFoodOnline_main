@@ -9,7 +9,7 @@ https://github.com/dev-rathankumar/foodOnline
 
 
 DIRECTORIOS
- cd D:\3-Programacion\Python\DjangoCartaRest\icard>
+ cd cd D:\3-Programacion\Python\
 
 
 COMMANDOS

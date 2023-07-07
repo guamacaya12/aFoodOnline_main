@@ -58,12 +58,12 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     
     # Default values for choices
-    RESTAURANT = 1
+    VENDOR = 1
     CUSTOMER = 2
 
     #Lista de selección dentro del modelo
     ROLE_CHOICE =(
-        (RESTAURANT, 'Restaurant')
+        (VENDOR, 'Restaurant')
         , (CUSTOMER, 'Customer')
     )
 
