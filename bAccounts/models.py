@@ -63,7 +63,7 @@ class User(AbstractBaseUser):
 
     #Lista de selección dentro del modelo
     ROLE_CHOICE =(
-        (VENDOR, 'Restaurant')
+        (VENDOR, 'vendor')
         , (CUSTOMER, 'Customer')
     )
 
