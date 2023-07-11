@@ -91,3 +91,16 @@ def registerVendor(request):
         , 'v_form':v_form
     }
     return render(request, 'bAccounts/registerVendor.html', context)
+
+
+
+def login(request):
+    return render(request, 'bAccounts/login.html')
+
+
+def logout(request):
+    return render(request, 'bAccounts/logout.html')
+
+
+def dashboard(request):
+    return render(request, 'bAccounts/dashboard.html')
