@@ -63,7 +63,7 @@ class User(AbstractBaseUser):
 
     #Lista de selección dentro del modelo
     ROLE_CHOICE =(
-        (VENDOR, 'vendor')
+        (VENDOR, 'Vendor')
         , (CUSTOMER, 'Customer')
     )
 
@@ -92,12 +92,25 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
-
+    
+    # "perm" indica a DJANGO cuales son los permisos que tiene cada usuario
+    # "app_label" indica cual es la app a la que tiene permisos ese usuario
     def has_perm(self, perm, obj = None):
         return self.is_admin
     
     def has_module_perms(self, app_label):
         return True
+    
+    # Esta función se utiliza para detectar
+    # Cuál dashboard se muestra cuando un usuario hace login
+    # Se asocia con el template "dashboard"
+    def get_role(self):
+        if self.role == 1:
+            user_role ='Vendor'
+        elif self.role ==2:
+            user_role ='Customer'
+        return user_role
+        print(f"Rol de usuario {user_role}")
 
     #--------------CLASS USER PROFILE (perfil de usuario)
 class UserProfile(models.Model):
