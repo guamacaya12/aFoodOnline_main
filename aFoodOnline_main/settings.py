@@ -160,8 +160,20 @@ MEDIA_ROOT = BASE_DIR/'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#Alertas y notificaciones (establacerlas en color rojo)
+#Alertas y notificaciones (establacerlas en color rojo cuando sean errores, pero los colores son dinámicos)
+# se utiliza en la página html de alertas
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS={
     messages.ERROR:'danger',
 }
+
+# Configuración de correo (envío de correos electrónicos para autenticación de doble factor)
+EMAIL_BACKEND = config('EMAIL_BACKEND') 
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast = int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+# Nombre del remitente que aparecerá en la bandeja de entrada 
+# Se utiliza también en la función "send_verification_email"
+DEFAULT_FROM_EMAIL = 'FoodOnline Marketplace <tzuppa@baobyte.com>'

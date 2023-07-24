@@ -20,5 +20,16 @@ urlpatterns = [
       , path('custDashboard/', views.custDashboard, name = 'custDashboard')            
       # Te lleva al dashboard de vendedor
       , path('vendorDashboard/', views.vendorDashboard, name = 'vendorDashboard')       
+      # Página de activación de usuario (cuando se envía el token por mail)
+      , path('activate/<uidb64>/<token>/', views.activate, name = 'activate') 
+
+  # Password Manager----------------
+      
+      , path('forgot_password/', views.forgot_password, name = 'forgot_password') 
+      # Validación de usuario para poder resetear password
+      , path('reset_password_validate/<uidb64>/<token>/', views.reset_password_validate, name = 'reset_password_validate') 
+      # Formulario para resetear passwird
+      , path('reset_password/', views.reset_password, name = 'reset_password') 
+
 
 ]

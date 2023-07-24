@@ -6,13 +6,54 @@ el message.tags, se establece en settings, y se invoca desde aquí, para que el 
 alertas, sea dinámico
 {% endcomment %}
 
+{% comment %} Se creó un archivo con styles para los messages (custom.css en bAccounts) para programar que las alertas aparezcan desde la esquina inferior izquierda {% endcomment %}
+
 {% if messages %}        
-{% for message in messages %}
-<div class="alert alert-{{message.tags}} show-notification" role="alert">
-<strong> {{ message}} </strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
-</div>
-{% endfor%}
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}} show-notification" role="alert">
+            <strong> {{ message}} </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+    {% endfor%}
 {% endif %}
+
+
+
+{% comment %} Errores en el formulario {% endcomment %}
+    
+{% for field in form %}
+    {% if field.errors %}
+        {% for error in field.errors %}
+
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ error }} 
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>     
+
+            </div>
+
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+  
+
+
+{% comment %} {% for field in form %}
+
+<ul class="errorlist">
+    {% for field in form %}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <li style="color: red;">{{error}}</li>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+
+    <li style="color: red;">{{form.non_field_errors}}</li>
+</ul>
+
+{% endfor %} {% endcomment %}
